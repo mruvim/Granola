@@ -24,7 +24,7 @@ Add dependency to your `Package.swift`:
 ```swift
 let package = Package(
     dependencies: [
-        .package(url: "https://github.com/mruvim/Granola.git", from: "0.0.1")
+        .package(url: "https://github.com/mruvim/Granola.git", from: "0.4.2")
     ],
     // ...
 )
@@ -145,23 +145,6 @@ Also, feel free to tweet at Open mHealth ([@openmhealth](http://twitter.com/open
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
-
-To setup Granola for development, first pull the code. Then install CocoaPods:
-```ruby
-$ gem install cocoapods
-```
-
-After that, change into the Example directory:
-```ruby
-$ cd Example
-```
-
-and type:
-```ruby
-pod install
-```
-
-Then open the .xcworkspace file instead of the .xcodeproj file. This will allow you to make changes to the code and run and add tests for any changes you make.
 
 
 ## License
