@@ -24,7 +24,7 @@ Add dependency to your `Package.swift`:
 ```swift
 let package = Package(
     dependencies: [
-        .package(url: "https://github.com/mruvim/Granola.git", from: "0.0.1")
+        .package(url: "https://github.com/mruvim/Granola.git", from: "0.4.2")
     ],
     // ...
 )
