@@ -18,21 +18,16 @@ to ensure the data is intuitive and clinically meaningful.
 
 ## Installation
 
-### CocoaPods
+### Swift Package Manager (Xcode 11+)
 
-Granola is available through [CocoaPods](http://cocoapods.org), a dependency manager for Objective-C. If you don't already have CocoaPods installed, you can install it with the following command:
-```ruby
-$ gem install cocoapods
-```
-
-To integrate Granola with your Xcode project, simply add the following line to your `Podfile`:
-```ruby
-pod "Granola"
-```
-
-and then run the following command:
-```ruby
-$ pod install
+Add dependency to your `Package.swift`:
+```swift
+let package = Package(
+    dependencies: [
+        .package(url: "https://github.com/mruvim/Granola.git", from: "0.0.1")
+    ],
+    // ...
+)
 ```
 
 ***
@@ -108,20 +103,20 @@ Upon running your code, the console would render the data sample as Open mHealth
 ### HKObjectType support
 
 The serializer has support for all HealthKit samples (`HKSample`), either through curated Open mHealth schemas or through generic HealthKit schemas. You can take a look at the [mapping table of supported types and their associated schemas](Docs/hkobject_type_coverage.md) to understand how data gets mapped. The `HKObjectType` identifiers are pulled from the
-[HealthKit Constant Reference](https://developer.apple.com/library/ios/documentation/HealthKit/Reference/HealthKit_Constants/#//apple_ref/doc/uid/TP40014710-CH2-DontLinkElementID_3). 
+[HealthKit Constant Reference](https://developer.apple.com/library/ios/documentation/HealthKit/Reference/HealthKit_Constants/#//apple_ref/doc/uid/TP40014710-CH2-DontLinkElementID_3).
 
 You can retrieve a map (`NSDictionary`) of the supported types in Granola and the class name of the specific serializer they use by calling the static method:
-```objective-c 
+```objective-c
 [OMHHealthKitConstantsMapper allSupportedTypeIdentifiersToClasses]
-``` 
+```
 
 You can also retrieve a list of those types, without their associated serializers, using the method:
-```objective-c 
+```objective-c
 [OMHSerializer supportedTypeIdentifiers]
-``` 
+```
 
 And retrieve a list of types that serialize with Open mHealth curated schemas (instead of the generic type schemas) by using the method:
-```objective-c 
+```objective-c
 [OMHSerializer supportedTypeIdentifiersWithOMHSchema]
 ```
 
@@ -134,7 +129,7 @@ Over time, as curated schemas are developed that correspond to the HealthKit dat
 
 Granola uses the time zone specified for the `HKMetadataKeyTimeZone` key to serialize timestamps when it is present. If time zone metadata is not provided, Granola uses the default time zone of the application for the UTC offset in timestamps. Although these timestamps are correct, some data, especially older data, that is being serialized may be offset incorrectly if it was originally created by HealthKit in a different time zone than the device is in when Granola serializes it. For example, if a data point was originally created by HealthKit in San Francisco on June 1st, 2015 at 8:00am (-07:00), but then serialized three months later in New York, the timestamp would read 2015-06-01T11:00-04:00. These are technically the same point in time, however they are offset differently.
 
-In a future update, we plan to allow developers to specify the prefered time zone for serializing data points to give them control over how timestamps are serialized. 
+In a future update, we plan to allow developers to specify the prefered time zone for serializing data points to give them control over how timestamps are serialized.
 
 ## Contact
 
@@ -179,4 +174,3 @@ Granola is available under the Apache 2 license. See the [LICENSE](/LICENSE) fil
 Brent Hargrave ([@brenthargrave](http://twitter.com/brenthargrave))  
 Chris Schaefbauer (chris.schaefbauer@openmhealth.org)  
 Emerson Farrugia (emerson@openmhealth.org)  
-
