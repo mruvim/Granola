@@ -1077,8 +1077,7 @@
     
     [fullSerializedDictionary addEntriesFromDictionary:@{
                                                          @"effective_time_frame":[self populateTimeFrameProperty:workoutSample.startDate endDate:workoutSample.endDate],
-                                                         @"activity_name":[OMHHealthKitConstantsMapper stringForHKWorkoutActivityType:workoutSample.workoutActivityType]
-                                                         
+                                                         @"activity_name": [OMHHealthKitConstantsMapper stringForHKWorkoutActivityType: (int)workoutSample.workoutActivityType]
                                                          }];
     return fullSerializedDictionary;
 }

@@ -49,8 +49,14 @@
             return @"HKWorkoutActivityTypeCycling";
         case HKWorkoutActivityTypeDance:
             return @"HKWorkoutActivityTypeDance";
-        case HKWorkoutActivityTypeDanceInspiredTraining:
-            return @"HKWorkoutActivityTypeDanceInspiredTraining";
+        case HKWorkoutActivityTypeSocialDance:
+            return @"HKWorkoutActivityTypeSocialDance";
+        case HKWorkoutActivityTypeCardioDance:
+            return @"HKWorkoutActivityTypeCardioDance";
+        case HKWorkoutActivityTypeBarre:
+            return @"HKWorkoutActivityTypeBarre";
+        case HKWorkoutActivityTypePilates:
+            return @"HKWorkoutActivityTypePilates";
         case HKWorkoutActivityTypeElliptical:
             return @"HKWorkoutActivityTypeElliptical";
         case HKWorkoutActivityTypeEquestrianSports:
@@ -79,8 +85,10 @@
             return @"HKWorkoutActivityTypeMartialArts";
         case HKWorkoutActivityTypeMindAndBody:
             return @"HKWorkoutActivityTypeMindAndBody";
-        case HKWorkoutActivityTypeMixedMetabolicCardioTraining:
-            return @"HKWorkoutActivityTypeMixedMetabolicCardioTraining";
+        case HKWorkoutActivityTypeMixedCardio:
+            return @"HKWorkoutActivityTypeMixedCardio";
+        case HKWorkoutActivityTypeHighIntensityIntervalTraining:
+            return @"HKWorkoutActivityTypeHighIntensityIntervalTraining";
         case HKWorkoutActivityTypePaddleSports:
             return @"HKWorkoutActivityTypePaddleSports";
         case HKWorkoutActivityTypePlay:
@@ -288,7 +296,6 @@
 }
 
 + (NSDictionary*)allSupportedQuantityTypeIdentifiersToClass {
-    
     static NSDictionary* allQuantityTypeIdsToClasses = nil;
     if (allQuantityTypeIdsToClasses == nil) {
         allQuantityTypeIdsToClasses = @{
@@ -360,15 +367,20 @@
                                         HKQuantityTypeIdentifierRespiratoryRate: @"OMHSerializerRespiratoryRate",
                                         HKQuantityTypeIdentifierStepCount : @"OMHSerializerStepCount",
                                         HKQuantityTypeIdentifierUVExposure: @"OMHSerializerGenericQuantitySample",
-                                        
-                                        /// Added March 16, 2021
-                                        HKQuantityTypeIdentifierWalkingSpeed: @"OMHSerializerGenericQuantitySample",
                                         HKQuantityTypeIdentifierRestingHeartRate: @"OMHSerializerGenericQuantitySample",
                                         HKQuantityTypeIdentifierWalkingHeartRateAverage: @"OMHSerializerGenericQuantitySample",
                                         HKQuantityTypeIdentifierHeartRateVariabilitySDNN: @"OMHSerializerGenericQuantitySample",
                                         HKQuantityTypeIdentifierAppleExerciseTime: @"OMHSerializerGenericQuantitySample"
                                         };
+        
+        if (@available(iOS 14, *)) {
+            NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:allQuantityTypeIdsToClasses];
+            [dict setValue:@"OMHSerializerGenericQuantitySample" forKey:HKQuantityTypeIdentifierWalkingSpeed];
+            allQuantityTypeIdsToClasses = [[NSDictionary alloc] initWithDictionary:dict];
+        }
     }
+
+    
     return allQuantityTypeIdsToClasses;
 }
 
