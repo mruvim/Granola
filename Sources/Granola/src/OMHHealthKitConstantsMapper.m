@@ -359,7 +359,14 @@
                                         HKQuantityTypeIdentifierPeripheralPerfusionIndex: @"OMHSerializerGenericQuantitySample",
                                         HKQuantityTypeIdentifierRespiratoryRate: @"OMHSerializerRespiratoryRate",
                                         HKQuantityTypeIdentifierStepCount : @"OMHSerializerStepCount",
-                                        HKQuantityTypeIdentifierUVExposure: @"OMHSerializerGenericQuantitySample"
+                                        HKQuantityTypeIdentifierUVExposure: @"OMHSerializerGenericQuantitySample",
+                                        
+                                        /// Added March 16, 2021
+                                        HKQuantityTypeIdentifierWalkingSpeed: @"OMHSerializerGenericQuantitySample",
+                                        HKQuantityTypeIdentifierRestingHeartRate: @"OMHSerializerGenericQuantitySample",
+                                        HKQuantityTypeIdentifierWalkingHeartRateAverage: @"OMHSerializerGenericQuantitySample",
+                                        HKQuantityTypeIdentifierHeartRateVariabilitySDNN: @"OMHSerializerGenericQuantitySample",
+                                        HKQuantityTypeIdentifierAppleExerciseTime: @"OMHSerializerGenericQuantitySample"
                                         };
     }
     return allQuantityTypeIdsToClasses;
